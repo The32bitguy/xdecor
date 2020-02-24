@@ -244,6 +244,8 @@ function workbench.on_take(pos, listname, index, stack, player)
 			local player_inv = player:get_inventory()
 			if player_inv:room_for_item("main", fromstack) then
 				player_inv:add_item("main", fromstack)
+			elseif player_inv:room_for_item("main2", fromstack) then
+				player_inv:add_item("main2", fromstack)
 			end
 		end
 
