@@ -77,18 +77,11 @@ end
 
 local main_fs = [[
 	label[0.9,1.23;Cut]
-	label[0.9,2.23;Repair]
 	box[-0.05,1;2.05,0.9;#555555]
-	box[-0.05,2;2.05,0.9;#555555]
 	button[0,0;2,1;craft;Crafting]
-	button[2,0;2,1;storage;Storage]
 	image[3,1;1,1;gui_furnace_arrow_bg.png^[transformR270]
 	image[0,1;1,1;worktable_saw.png]
-	image[0,2;1,1;worktable_anvil.png]
-	image[3,2;1,1;hammer_layout.png]
 	list[context;input;2,1;1,1;]
-	list[context;tool;2,2;1,1;]
-	list[context;hammer;3,2;1,1;]
 	list[context;forms;4,0;4,3;]
 	listring[current_player;main]
 	listring[context;tool]
@@ -129,8 +122,8 @@ local formspecs = {
 
 function workbench:set_formspec(meta, id)
 	meta:set_string("formspec",
-		"size[8,7;]list[current_player;main;0,3.25;8,4;]" ..
-		formspecs[id] .. xbg .. default.get_hotbar_bg(0,3.25))
+                        "size[8,7;]" ..sfinv.get_inventory_area_formspec(3.25)..
+		formspecs[id])
 end
 
 function workbench.construct(pos)
@@ -141,7 +134,7 @@ function workbench.construct(pos)
 	inv:set_size("input", 1)
 	inv:set_size("hammer", 1)
 	inv:set_size("forms", 4*3)
-	inv:set_size("storage", 8*2)
+	inv:set_size("storage", 0*0)
 
 	meta:set_string("infotext", "Work Bench")
 	workbench:set_formspec(meta, 1)
