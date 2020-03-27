@@ -216,7 +216,19 @@ function workbench.on_move(pos, from_list, from_index, to_list, to_index, count,
 end
 
 function workbench.allow_take(pos, listname, index, stack, player)
-	return stack:get_count()
+   if listname == "forms" then
+	local inv = minetest.get_meta(pos):get_inventory()
+        local player_inv = player:get_inventory()
+
+      local fromstack = inv:get_stack(listname, index)
+      if not player_inv:room_for_item("main", fromstack)
+         and not player_inv:room_for_item("main2", fromstack)
+      then
+         return 0
+      end
+   end
+
+   return stack:get_count()
 end
 
 function workbench.on_take(pos, listname, index, stack, player)
@@ -235,11 +247,18 @@ function workbench.on_take(pos, listname, index, stack, player)
 		local fromstack = inv:get_stack(listname, index)
 		if not fromstack:is_empty() and fromstack:get_name() ~= stackname then
 			local player_inv = player:get_inventory()
+
+                        local leftover
 			if player_inv:room_for_item("main", fromstack) then
-				player_inv:add_item("main", fromstack)
+                           minetest.log("ree " .. fromstack:to_string())
+				leftover = player_inv:add_item("main", fromstack)
 			elseif player_inv:room_for_item("main2", fromstack) then
-				player_inv:add_item("main2", fromstack)
+                           minetest.log("ree2 " .. fromstack:to_string())
+				leftover = player_inv:add_item("main2", fromstack)
 			end
+                        if leftover then
+                           minetest.add_item(pos, leftover)
+                        end
 		end
 
 		input:take_item(ceil(stack:get_count() / workbench.defs[index][2]))
