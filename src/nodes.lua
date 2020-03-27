@@ -54,7 +54,7 @@ register_pane("wood_frame", "Wood Frame", {
 })
 
 xdecor.register("baricade", {
-	description = "Baricade",
+	description = "Barricade",
 	drawtype = "plantlike",
 	paramtype2 = "facedir",
 	inventory_image = "xdecor_baricade.png",
