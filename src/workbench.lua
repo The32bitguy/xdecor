@@ -250,10 +250,8 @@ function workbench.on_take(pos, listname, index, stack, player)
 
                         local leftover
 			if player_inv:room_for_item("main", fromstack) then
-                           minetest.log("ree " .. fromstack:to_string())
 				leftover = player_inv:add_item("main", fromstack)
 			elseif player_inv:room_for_item("main2", fromstack) then
-                           minetest.log("ree2 " .. fromstack:to_string())
 				leftover = player_inv:add_item("main2", fromstack)
 			end
                         if leftover then
