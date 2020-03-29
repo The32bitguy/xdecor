@@ -218,6 +218,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "xdecor:tatami",
 	recipe = {
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
 		{"farming:wheat", "farming:wheat", "farming:wheat"}
 	}
 })
@@ -266,4 +267,3 @@ minetest.register_craft({
 		{"group:stick", "default:torch", "group:stick"}
 	}
 })
-
