@@ -106,14 +106,14 @@ if not minetest.get_modpath("moreblocks") then
 	})
 end
 
-minetest.register_craft({
-	output = "xdecor:enderchest",
-	recipe = {
-		{"", "default:obsidian", ""},
-		{"default:obsidian", "default:chest", "default:obsidian"},
-		{"", "default:obsidian", ""}
-	}
-})
+-- minetest.register_craft({
+-- 	output = "xdecor:enderchest",
+-- 	recipe = {
+-- 		{"", "default:obsidian", ""},
+-- 		{"default:obsidian", "default:chest", "default:obsidian"},
+-- 		{"", "default:obsidian", ""}
+-- 	}
+-- })
 
 minetest.register_craft({
 	output = "xdecor:hard_clay",
