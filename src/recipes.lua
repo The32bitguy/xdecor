@@ -2,7 +2,7 @@ minetest.register_craft({
 	output = "xdecor:baricade",
 	recipe = {
 		{"group:stick", "", "group:stick"},
-		{"", "default:steel_ingot", ""},
+		{"", "group:ferrous_ingot", ""},
 		{"group:stick", "", "group:stick"}
 	}
 })
